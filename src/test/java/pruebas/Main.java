@@ -2,7 +2,6 @@ package pruebas;
 
 import umg.edu.gt.prograIII.list.ListaEnlazada;
 import umg.edu.gt.prograIII.tree.ArbolBinario;
-import umg.edu.gt.prograIII.testObjeto.Persona;
 
 public class Main {
     /*public static void main(String[] args) {
