@@ -13,7 +13,7 @@ public class Cola<T> {
 
     public void encolar(T dato) {
         Nodo<T> nuevoNodo = new Nodo<>(dato);
-        if (fin == null) { // cola vacía
+        if (fin == null) {
             frente = nuevoNodo;
             fin = nuevoNodo;
         } else {
@@ -25,11 +25,11 @@ public class Cola<T> {
 
     public T desencolar() {
         if (estaVacia()) {
-            return null; // o lanzar excepción si prefieres
+            return null;
         }
         T dato = frente.getDato();
         frente = frente.getSiguiente();
-        if (frente == null) { // si la cola quedó vacía
+        if (frente == null) {
             fin = null;
         }
         tamaño--;

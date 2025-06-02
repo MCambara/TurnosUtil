@@ -12,7 +12,7 @@ public class ListaEnlazada<T> implements Iterable<T> {
         this.size = 0;
     }
 
-    // Agregar al final
+
     public void agregar(T dato) {
         Nodo<T> nuevo = new Nodo<>(dato);
         if (cabeza == null) {
@@ -27,7 +27,7 @@ public class ListaEnlazada<T> implements Iterable<T> {
         size++;
     }
 
-    // Mostrar todos los elementos
+
     public void mostrar() {
         Nodo<T> actual = cabeza;
         while (actual != null) {
@@ -36,7 +36,7 @@ public class ListaEnlazada<T> implements Iterable<T> {
         }
     }
 
-    // Buscar un elemento
+
     public boolean buscar(T dato) {
         Nodo<T> actual = cabeza;
         while (actual != null) {
@@ -48,7 +48,7 @@ public class ListaEnlazada<T> implements Iterable<T> {
         return false;
     }
 
-    // Eliminar un elemento (primer aparición)
+
     public boolean eliminar(T dato) {
         if (cabeza == null) return false;
 
@@ -70,12 +70,12 @@ public class ListaEnlazada<T> implements Iterable<T> {
         return false;
     }
 
-    // Obtener tamaño
+
     public int tamaño() {
         return size;
     }
 
-    // Implementación de Iterable
+
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {

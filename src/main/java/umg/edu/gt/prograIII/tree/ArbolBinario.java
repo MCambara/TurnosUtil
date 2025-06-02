@@ -1,5 +1,9 @@
 package umg.edu.gt.prograIII.tree;
 
+import umg.edu.gt.prograIII.list.ListaEnlazada;
+
+import java.util.function.Consumer;
+
 public class ArbolBinario<T extends Comparable<T>> implements InterfazArbol<T> {
 
     private T valor;
@@ -32,8 +36,6 @@ public class ArbolBinario<T extends Comparable<T>> implements InterfazArbol<T> {
                 }
                 dcho.insertar(dato);
             } else {
-                // Dato igual ya existe, se ignora la inserción (no se lanza excepción)
-                // Simplemente no hacemos nada para evitar duplicados
             }
         }
     }
@@ -140,7 +142,7 @@ public class ArbolBinario<T extends Comparable<T>> implements InterfazArbol<T> {
                 nuevoNodo.padre = padre;
             }
         } else {
-            // Nodo raíz
+
             if (nuevoNodo != null) {
                 this.valor = nuevoNodo.valor;
                 this.izdo = nuevoNodo.izdo;
@@ -171,5 +173,19 @@ public class ArbolBinario<T extends Comparable<T>> implements InterfazArbol<T> {
         int izq = (izdo != null) ? izdo.contarNodos() : 0;
         int der = (dcho != null) ? dcho.contarNodos() : 0;
         return izq + der + 1;
+    }
+
+    public void recorrerInOrden(Consumer<T> accion) {
+        if (valor != null) {
+            if (izdo != null) izdo.recorrerInOrden(accion);
+            accion.accept(valor);
+            if (dcho != null) dcho.recorrerInOrden(accion);
+        }
+    }
+
+    public ListaEnlazada<T> inOrdenLista() {
+        ListaEnlazada<T> resultado = new ListaEnlazada<>();
+        recorrerInOrden(resultado::agregar);
+        return resultado;
     }
 }
